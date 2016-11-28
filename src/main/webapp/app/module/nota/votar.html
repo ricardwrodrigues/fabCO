@@ -1,0 +1,35 @@
+<form name="editForm" role="form" novalidate ng-submit="vm.validate()" show-validation>
+    <div>
+        <h4 id="myNotaLabel">Entre com cpf para votar</h4>
+    </div>
+    <div>
+        <div class="form-group">
+            <label class="control-label" for="field_cpf">Cpf</label>
+            <input type="text" class="form-control" name="cpf" id="field_cpf"
+                   ng-model="vm.cpf"
+                   required ng-minlength="11" maxlength="14" ng-pattern="vm.regexCpf" />
+            <div ng-show="editForm.cpf.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.cpf.$error.required">
+                    Campo obrigatório.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.cpf.$error.minlength||editForm.cpf.$error.maxlength||editForm.cpf.$error.pattern">
+                    Formato de CFP inválido.
+                </p>
+            </div>
+            <div class="alert-danger" ng-cloak ng-show="vm.isValid">
+                <p > Número do cpf inválido ou não cadastrado.</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" ui-sref="home">
+                <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+            </button>
+            <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-info">
+                <span class="glyphicon glyphicon-user"></span>&nbsp;<span>Entrar</span>
+            </button>
+        </div>
+    </div>
+</form>
+

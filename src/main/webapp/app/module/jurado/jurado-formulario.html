@@ -1,0 +1,59 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myJuradoLabel">
+            <span ng-cloak ng-show="!vm.jurado.id">Adicionar jurado</span>
+            <span ng-cloak ng-show="vm.jurado.id">Editar</span>
+        </h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.jurado.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.jurado.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_nome">Nome</label>
+            <input type="text" class="form-control" name="nome" id="field_nome"
+                    ng-model="vm.jurado.nome"
+                    required ng-maxlength="45" />
+            <div ng-show="editForm.nome.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.nome.$error.required">
+                    Campo obrigatório.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.nome.$error.maxlength" >
+                    Campo não pode ser maior que 45 caracteres.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_cpf">Cpf</label>
+            <input type="text" class="form-control" name="cpf" id="field_cpf"
+                    ng-model="vm.jurado.cpf" ng-pattern="vm.regexCpf"
+                    required />
+            <div ng-show="editForm.cpf.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.cpf.$error.required">
+                    Campo obrigatório.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.cpf.$error.minlength||editForm.cpf.$error.maxlength||editForm.cpf.$error.pattern">
+                    Formato do CPF inválido.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Salvar</span>
+        </button>
+    </div>
+</form>

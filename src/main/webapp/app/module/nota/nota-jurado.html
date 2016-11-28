@@ -1,0 +1,44 @@
+<form name="editForm" role="form" novalidate ng-submit="vm.saveNotas()" show-validation>
+    <div ng-repeat="nota in vm.notas" >
+        <h2>Notas para escola {{nota.escolaSamba.nome}}</h2>
+        <br/>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th><span> Quesito</span></th>
+                        <th><span>Nota</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{nota.quesito.nome}}</a></td>
+                        <td>
+                            <span class="hide">{{nota.nota}}</span>
+                            <input type="number" class="form-control" name="nota_{{$parent.$index}}_{{$index}}" id="field_nota"
+                                   ng-model="nota.nota"
+                                   required min="0" max="10" />
+                            <span ng-show="editForm.nota_{{$parent.$index}}_{{$index}}.$error.required" class="label-danger">Campo Obrigatório.</span>
+                            <span ng-show="editForm.nota_{{$parent.$index}}_{{$index}}.$error.min ||editForm.nota_{{$parent.$index}}_{{$index}}.$error.max" class="label-danger">
+                                A nota deve ser entre 0 e 10.
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="alert alert-success nimated fadeInDown animation-delay-25" ng-show="vm.isSaving">
+            <strong>Voto computado com sucesso!</strong>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ui-sref="home">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancelar</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid " class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Salvar</span>
+        </button>
+    </div>
+</form>

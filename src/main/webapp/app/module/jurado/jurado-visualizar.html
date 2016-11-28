@@ -1,0 +1,26 @@
+
+<div>
+    <h2><span>Jurado</span> {{vm.jurado.id}}</h2>
+    <hr>
+    <dl class="dl-horizontal">
+        <dt><span>Nome</span></dt>
+        <dd>
+            <span>{{vm.jurado.nome}}</span>
+        </dd>
+        <dt><span>Cpf</span></dt>
+        <dd>
+            <span>{{vm.jurado.cpf | cpf}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Voltar</span>
+    </button>
+
+    <button type="button" ui-sref="jurado.editar({id:vm.jurado.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Editar</span>
+    </button>
+</div>
