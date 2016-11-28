@@ -1,1 +1,9 @@
-# fabCO
+<h1>Bem vindo!</h1>
+<p class="lead">Projeto simples para demonstração de desenvolvimento de Front-End/AngularJS.
+    Concebido para uso simples de rotas e fluxos. Não foi abortado o uso de criação de componentes  "directivas" e suas validações.
+
+</p>
+<p class="lead"> Para utilizar o exemplo será necessário o cadastro do jurado,
+    no campo CPF poderia ser aplicado um componente de validação ui-mask e ng-cpf e não foi possível devido a incompatibilidade do JS "versão".
+    Depois do cadastro é clicar em votar com o CPF válido para lista ser apresentada. A nota não está sendo persistida "Fluxo emulado" para o teste
+</p>
